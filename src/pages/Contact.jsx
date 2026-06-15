@@ -6,7 +6,7 @@ import Inscription from '../components/Inscription'
 const WHATSAPP = '5551995435251'
 
 const socials = [
-  { icon: Instagram, label: 'Instagram', handle: '@velomaicon', href: 'https://instagram.com/velomaicon', color: 'hover:text-pink-400 hover:border-pink-400' },
+  { icon: Instagram, label: 'Instagram', handle: '@velo_maicon', href: 'https://instagram.com/velo_maicon', color: 'hover:text-pink-400 hover:border-pink-400' },
   { icon: Facebook, label: 'Facebook', handle: 'Velomaicon', href: 'https://facebook.com/velomaicon', color: 'hover:text-blue-400 hover:border-blue-400' },
   { icon: MessageCircle, label: 'WhatsApp', handle: '(51) 99543-5251', href: `https://wa.me/${WHATSAPP}`, color: 'hover:text-green-400 hover:border-green-400' },
 ]

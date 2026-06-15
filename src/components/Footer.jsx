@@ -33,7 +33,7 @@ export default function Footer() {
             {/* Social */}
             <div className="flex gap-3 mt-5">
               <a
-                href="https://instagram.com/velomaicon"
+                href="https://instagram.com/velo_maicon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-brand-orange hover:border-brand-orange transition-all"
