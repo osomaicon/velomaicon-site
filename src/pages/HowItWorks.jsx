@@ -6,8 +6,8 @@ import {
 import CTAButton from '../components/CTAButton'
 import Inscription from '../components/Inscription'
 
-const ADDRESS_LINES = ['Rua João Sarmento, 1538 — Bairro Caravaggio', 'Osório – RS']
-const ADDRESS_COPY = 'Velomaicon — Rua João Sarmento, 1538, Bairro Caravaggio, Osório – RS'
+const ADDRESS_LINES = ['Rua João Sarmento, 1538 — Bairro Caravaggio', 'Osório – RS · CEP 95520-000']
+const ADDRESS_COPY = 'Velomaicon — Rua João Sarmento, 1538, Bairro Caravaggio, Osório – RS, CEP 95520-000'
 
 // The 4 stations of the part's round trip: you → bench → you.
 const steps = [
