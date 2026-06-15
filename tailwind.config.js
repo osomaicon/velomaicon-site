@@ -5,16 +5,19 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Rajdhani', 'system-ui', 'sans-serif'],
       },
       colors: {
         brand: {
           orange: '#f97316',
           'orange-dark': '#ea580c',
           'orange-light': '#fed7aa',
-          dark: '#0a0a0f',
-          surface: '#111827',
-          card: '#1f2937',
-          border: '#374151',
+          amber: '#fbbf24',
+          dark: '#080c14',
+          surface: '#0f1623',
+          card: '#141e2e',
+          border: '#1e2d42',
+          silver: '#94a3b8',
         },
       },
       animation: {

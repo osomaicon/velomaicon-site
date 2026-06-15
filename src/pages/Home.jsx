@@ -88,58 +88,87 @@ export default function Home() {
     <div ref={ref}>
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-surface to-brand-dark" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(249,115,22,0.15),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(249,115,22,0.08),transparent_60%)]" />
+        {/* Deep instrument-cluster background */}
+        <div className="absolute inset-0 bg-brand-dark" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(8,20,40,0.9),transparent)]" />
 
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        />
+        {/* Signature element: speedometer arc SVG */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+          <svg
+            viewBox="0 0 800 800"
+            className="w-[700px] h-[700px] md:w-[900px] md:h-[900px] opacity-[0.07]"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Outer arc */}
+            <path d="M 100 550 A 340 340 0 1 1 700 550" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+            {/* Inner arc */}
+            <path d="M 150 565 A 280 280 0 1 1 650 565" stroke="#f97316" strokeWidth="1" strokeLinecap="round" />
+            {/* Tick marks — major */}
+            {Array.from({ length: 11 }).map((_, i) => {
+              const angle = -225 + i * 27
+              const rad = (angle * Math.PI) / 180
+              const cx = 400, cy = 400, r1 = 330, r2 = 305
+              const x1 = cx + r1 * Math.cos(rad), y1 = cy + r1 * Math.sin(rad)
+              const x2 = cx + r2 * Math.cos(rad), y2 = cy + r2 * Math.sin(rad)
+              return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+            })}
+            {/* Tick marks — minor */}
+            {Array.from({ length: 55 }).map((_, i) => {
+              if (i % 5 === 0) return null
+              const angle = -225 + i * 5.4
+              const rad = (angle * Math.PI) / 180
+              const cx = 400, cy = 400, r1 = 330, r2 = 318
+              const x1 = cx + r1 * Math.cos(rad), y1 = cy + r1 * Math.sin(rad)
+              const x2 = cx + r2 * Math.cos(rad), y2 = cy + r2 * Math.sin(rad)
+              return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="1" strokeLinecap="round" />
+            })}
+            {/* Center dot */}
+            <circle cx="400" cy="400" r="8" fill="#f97316" />
+            <circle cx="400" cy="400" r="20" stroke="#f97316" strokeWidth="1" />
+          </svg>
+        </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          {/* Logo hero */}
-          <div className="flex justify-center mb-8 animate-fade-in">
-            <img src={logo} alt="Velomaicon" className="h-28 md:h-36 w-auto drop-shadow-2xl" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+          {/* Logo */}
+          <div className="flex justify-center mb-10 animate-fade-in">
+            <img src={logo} alt="Velomaicon" className="h-24 md:h-32 w-auto drop-shadow-2xl" />
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 animate-slide-up">
-            Reparo de Painéis e<br />
-            <span className="text-gradient">Velocímetros</span> com<br />
-            Garantia para Todo o Brasil
+          {/* Eyebrow */}
+          <p className="font-display text-brand-orange tracking-[0.25em] text-sm uppercase mb-5 animate-fade-in">
+            Osório, RS · Atendimento para Todo o Brasil
+          </p>
+
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-7 animate-slide-up">
+            Seu painel de volta<br />
+            <span className="text-brand-orange">funcionando.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Sediados em <strong className="text-white">Osório, RS</strong>, atendemos clientes de todo o Brasil via envio postal. Diagnóstico preciso, reparo profissional e garantia no serviço.
-          </p>
-          <p className="text-gray-400 text-base mb-10 animate-slide-up" style={{ animationDelay: '0.15s' }}>
-            Carros · Motos · Embarcações Náuticas
+          <p className="text-lg text-brand-silver max-w-xl mx-auto mb-10 animate-slide-up leading-relaxed" style={{ animationDelay: '0.1s' }}>
+            Reparo especializado de velocímetros, painéis e computadores de bordo para carros, motos e embarcações. Você envia pelos Correios — nós devolvemos funcionando, com garantia.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <CTAButton size="lg" label="Solicitar Orçamento Grátis" />
             <Link
-              to="/servicos"
-              className="inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-gray-300 border border-brand-border rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all group"
+              to="/como-funciona"
+              className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-brand-silver border border-brand-border rounded-xl hover:border-brand-orange hover:text-white transition-all group"
             >
-              Ver Serviços
+              Como funciona o envio
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto mt-16 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          {/* Trust bar */}
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-14 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             {[
-              { value: '500+', label: 'Clientes atendidos' },
-              { value: '10+', label: 'Anos de experiência' },
-              { value: '100%', label: 'Garantia no serviço' },
-            ].map(s => (
-              <div key={s.label} className="text-center">
-                <div className="text-3xl font-extrabold text-brand-orange">{s.value}</div>
-                <div className="text-gray-400 text-xs mt-1">{s.label}</div>
-              </div>
+              '✓ Diagnóstico preciso',
+              '✓ Garantia por escrito',
+              '✓ 26 estados atendidos',
+              '✓ Prazo comunicado',
+            ].map(item => (
+              <span key={item} className="text-brand-silver text-sm font-medium">{item}</span>
             ))}
           </div>
         </div>
