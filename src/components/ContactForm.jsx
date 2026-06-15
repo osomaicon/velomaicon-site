@@ -21,8 +21,8 @@ export default function ContactForm() {
     setTimeout(() => setSent(false), 5000)
   }
 
-  const inputClass = 'w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-brand-orange transition-colors'
-  const labelClass = 'block text-sm font-medium text-gray-300 mb-1.5'
+  const inputClass = 'w-full bg-brand-surface border border-brand-border rounded-md px-4 py-3 text-brand-ink text-sm placeholder-brand-silver/60 focus:outline-none focus:border-brand-orange transition-colors'
+  const labelClass = 'inscription block text-[11px] text-brand-silver mb-2'
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -95,7 +95,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.02] glow"
+        className="w-full bg-brand-orange hover:bg-brand-orange-dark text-brand-dark font-semibold py-3.5 rounded-md flex items-center justify-center gap-2 transition-colors backlight"
       >
         {sent ? (
           <>
