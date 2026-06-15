@@ -14,27 +14,22 @@ const segments = [
   {
     icon: Car,
     title: 'Automóveis',
-    description: 'Reparo de painéis, velocímetros, conta-giros, displays e computadores de bordo para carros de todas as marcas.',
+    description: 'Painéis, velocímetros, conta-giros, displays e computadores de bordo para carros de todas as marcas.',
   },
   {
     icon: Bike,
     title: 'Motos',
-    description: 'Conserto de velocímetros digitais e analógicos, painéis multifuncionais e displays LCD para motos.',
+    description: 'Velocímetros digitais e analógicos, painéis multifuncionais e displays LCD para motos.',
   },
   {
     icon: Anchor,
     title: 'Náutica',
-    description: 'Manutenção especializada de instrumentos para barcos e lanchas: velocímetros, RPM, temperatura e combustível.',
+    description: 'Instrumentos para barcos e lanchas: velocímetros, RPM, temperatura e nível de combustível.',
   },
   {
     icon: Tractor,
     title: 'Quadricíclos',
-    description: 'Reparo e personalização de painéis para quadricíclos e ATVs de todas as marcas e modelos.',
-  },
-  {
-    icon: Palette,
-    title: 'Personalização',
-    description: 'Customização de iluminação, faces de mostrador, ponteiros e displays para dar um visual único ao seu painel.',
+    description: 'Painéis e velocímetros para quadricíclos, ATVs e side-by-sides de qualquer modelo.',
   },
 ]
 
@@ -188,16 +183,36 @@ export default function Home() {
       {/* Segments */}
       <section className="section-padding bg-brand-surface">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Atendemos <span className="text-gradient">3 segmentos</span></h2>
-            <p className="text-gray-400 max-w-xl mx-auto">Expertise especializada para cada tipo de veículo, com diagnóstico e reparo precisos.</p>
+          <div className="mb-12 animate-on-scroll">
+            <p className="text-brand-orange font-display tracking-widest text-sm uppercase mb-2">O que reparamos</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white max-w-2xl">Quatro tipos de veículo, uma especialidade: instrumentação.</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {segments.map((s, i) => (
               <div key={s.title} className="animate-on-scroll" style={{ transitionDelay: `${i * 0.1}s` }}>
-                <ServiceCard {...s} highlight={i === 0} />
+                <ServiceCard {...s} />
               </div>
             ))}
+          </div>
+
+          {/* Personalização — featured banner (a different kind of service) */}
+          <div className="animate-on-scroll mt-5 relative overflow-hidden rounded-2xl bg-gradient-to-r from-brand-orange/15 via-brand-card to-brand-card border border-brand-orange/30 p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6">
+            <div className="w-14 h-14 rounded-2xl bg-brand-orange flex items-center justify-center shrink-0 glow">
+              <Palette className="w-7 h-7 text-white" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-white font-display font-bold text-xl md:text-2xl mb-1">Personalização de Painéis</h3>
+              <p className="text-brand-silver text-sm md:text-base max-w-2xl">
+                Vai além do reparo: faces de mostrador customizadas, iluminação LED colorida, ponteiros e displays com visual exclusivo. Deixe seu painel com a sua cara.
+              </p>
+            </div>
+            <Link
+              to="/servicos"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-brand-orange text-white font-semibold rounded-xl border border-brand-border hover:border-brand-orange transition-all group"
+            >
+              Ver opções
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
@@ -206,7 +221,8 @@ export default function Home() {
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Por que escolher a <span className="text-gradient">Velomaicon?</span></h2>
+            <p className="text-brand-orange font-display tracking-widest text-sm uppercase mb-2">Por que a Velomaicon</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Confiança técnica do diagnóstico à entrega</h2>
             <p className="text-gray-400 max-w-xl mx-auto">Comprometidos com a qualidade técnica e a satisfação completa do cliente em cada reparo.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -228,7 +244,7 @@ export default function Home() {
       {/* How it works preview */}
       <section className="section-padding bg-brand-surface">
         <div className="max-w-5xl mx-auto text-center animate-on-scroll">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Simples de enviar, <span className="text-gradient">fácil de receber de volta</span></h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Simples de enviar, fácil de receber de volta</h2>
           <p className="text-gray-400 mb-8 max-w-xl mx-auto">Você embala a peça, envia pelos Correios ou transportadora, e nós cuidamos do resto. Seu painel chega de volta reparado com garantia.</p>
           <Link
             to="/como-funciona"
@@ -241,7 +257,7 @@ export default function Home() {
       </section>
 
       {/* Work Gallery */}
-      <section className="section-padding bg-brand-surface">
+      <section className="section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 animate-on-scroll">
             <div>
@@ -259,10 +275,11 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding">
+      <section className="section-padding bg-brand-surface">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">O que nossos <span className="text-gradient">clientes dizem</span></h2>
+            <p className="text-brand-orange font-display tracking-widest text-sm uppercase mb-2">Quem já enviou</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">O que nossos clientes dizem</h2>
             <p className="text-gray-400">Avaliações reais de clientes de todo o Brasil.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

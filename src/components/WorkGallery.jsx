@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
 
 // Import all work photos
 import w1 from '../assets/work-1.jpg'
@@ -14,8 +14,20 @@ import w9 from '../assets/work-9.jpg'
 import w10 from '../assets/work-10.jpg'
 import w11 from '../assets/work-11.jpg'
 import w12 from '../assets/work-12.jpg'
+import w13 from '../assets/work-13.jpg'
+import w14 from '../assets/work-14.jpg'
+import w15 from '../assets/work-15.jpg'
+import w16 from '../assets/work-16.jpg'
+import w17 from '../assets/work-17.jpg'
+import w18 from '../assets/work-18.jpg'
+import w19 from '../assets/work-19.jpg'
+import w20 from '../assets/work-20.jpg'
+import w21 from '../assets/work-21.jpg'
 
-const photos = [w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w12]
+const photos = [
+  w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11,
+  w12, w13, w14, w15, w16, w17, w18, w19, w20, w21,
+]
 
 export default function WorkGallery() {
   const [lightbox, setLightbox] = useState(null)
@@ -23,27 +35,41 @@ export default function WorkGallery() {
   const prev = () => setLightbox(i => (i - 1 + photos.length) % photos.length)
   const next = () => setLightbox(i => (i + 1) % photos.length)
 
+  // Keyboard navigation + lock body scroll while lightbox is open
+  useEffect(() => {
+    if (lightbox === null) return
+    const onKey = e => {
+      if (e.key === 'Escape') setLightbox(null)
+      if (e.key === 'ArrowLeft') prev()
+      if (e.key === 'ArrowRight') next()
+    }
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [lightbox])
+
   return (
     <>
-      {/* Masonry-style asymmetric grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
+      {/* Uniform responsive grid — consistent square tiles */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
         {photos.map((src, i) => (
           <button
             key={i}
             onClick={() => setLightbox(i)}
-            className={`relative overflow-hidden rounded-xl group cursor-zoom-in ${
-              i === 0 ? 'col-span-2 row-span-2' :
-              i === 5 ? 'col-span-2' :
-              i === 10 ? 'col-span-2' : ''
-            }`}
-            style={{ aspectRatio: i === 0 ? '1/1' : i === 5 || i === 10 ? '2/1' : '1/1' }}
+            className="relative overflow-hidden rounded-xl group cursor-zoom-in aspect-square"
           >
             <img
               src={src}
               alt={`Trabalho Velomaicon ${i + 1}`}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+              <ZoomIn className="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
           </button>
         ))}
       </div>
