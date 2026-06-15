@@ -67,7 +67,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-white font-semibold mb-1">Endereço</p>
-                    <p className="text-gray-400 text-sm">Rua Major João Marques, 1538 — Caravaggio<br />Osório, RS — CEP 95520-000</p>
+                    <p className="text-gray-400 text-sm">Rua João Sarmento, 1538 — Caravaggio<br />Osório, RS — CEP 95520-000</p>
                     <p className="text-gray-500 text-xs mt-1">📦 Recebemos peças de todo o Brasil via Correios e transportadora</p>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export default function Contact() {
                 <div className="card-dark rounded-2xl overflow-hidden h-52 flex items-center justify-center border border-brand-border">
                   <iframe
                     title="Velomaicon no mapa"
-                    src="https://maps.google.com/maps?q=Rua+Major+João+Marques,+1538,+Caravaggio,+Osório+-+RS&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    src="https://maps.google.com/maps?q=Rua+João+Sarmento,+1538,+Caravaggio,+Osório+-+RS&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}

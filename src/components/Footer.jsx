@@ -85,7 +85,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-gray-400">
                 <MapPin className="w-4 h-4 text-brand-orange mt-0.5 shrink-0" />
-                <span>Rua Major João Marques, 1538 — Caravaggio<br />Osório, RS</span>
+                <span>Rua João Sarmento, 1538 — Caravaggio<br />Osório, RS</span>
               </li>
               <li className="flex items-center gap-2 text-sm text-gray-400">
                 <Phone className="w-4 h-4 text-brand-orange shrink-0" />

@@ -10,28 +10,25 @@ import Inscription from '../components/Inscription'
 const steps = [
   {
     icon: MessageCircle,
-    title: 'Entre em contato via WhatsApp ou formulário',
-    description: 'Descreva o problema do seu painel — velocímetro parado, display apagado, marcador de combustível travado, etc. Envie fotos se possível. Nossa equipe responde rapidamente com orientações iniciais e uma estimativa de orçamento.',
+    title: 'Entre em contato',
+    description: 'Fale com a gente pelo WhatsApp e envie fotos ou um vídeo do problema no seu painel, velocímetro ou computador de bordo. Isso nos ajuda a fazer um diagnóstico inicial mais preciso e te orientar sobre o envio.',
   },
   {
     icon: PackageOpen,
-    title: 'Embale a peça com segurança',
-    description: 'Após confirmar o orçamento, embale o painel em plástico-bolha, coloque dentro de uma caixa resistente e preencha os espaços com jornal ou espuma. Identifique a caixa com seu nome e telefone dentro do pacote.',
-  },
-  {
-    icon: Truck,
-    title: 'Envie para Osório, RS',
-    description: 'Envie via Correios (PAC ou SEDEX), Jadlog, Total Express ou qualquer transportadora de sua preferência. O endereço completo para envio é fornecido via WhatsApp. Guarde o código de rastreamento e nos informe.',
+    title: 'Envie seu painel',
+    description: 'Embale a peça com cuidado e envie pelo correio para o seguinte endereço:',
+    address: 'Rua João Sarmento, 1538 — Bairro Caravaggio\nOsório – RS',
+    note: 'Atendemos todo o Brasil.',
   },
   {
     icon: Wrench,
-    title: 'Diagnóstico, reparo e testes',
-    description: 'Ao receber a peça, nossos técnicos realizam diagnóstico completo, identificam todos os pontos com defeito e executam o reparo com peças de qualidade. Cada painel passa por testes rigorosos antes de ser liberado.',
+    title: 'Diagnóstico e reparo',
+    description: 'Nossa equipe avalia a peça, identifica o problema com precisão e realiza o conserto com peças e técnicas adequadas.',
   },
   {
     icon: PackageCheck,
-    title: 'Devolução com garantia',
-    description: 'Seu painel volta embalado com segurança, acompanhado de nota fiscal e garantia por escrito. Você recebe o código de rastreamento assim que o despacho é realizado. Prazo médio de reparo: 5 a 10 dias úteis.',
+    title: 'Receba de volta',
+    description: 'Após o reparo, testamos tudo e enviamos sua peça de volta pelo correio, pronta para instalar.',
   },
 ]
 
