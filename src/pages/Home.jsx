@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Car, Bike, Anchor, ShieldCheck, Truck, Wrench, Clock, Star,
-  ChevronRight, ArrowRight, Zap, Palette, Tractor
+  ChevronRight, ArrowRight, Zap, Palette, Tractor, Instagram
 } from 'lucide-react'
 import CTAButton from '../components/CTAButton'
 import ServiceCard from '../components/ServiceCard'
@@ -10,6 +10,13 @@ import TestimonialCard from '../components/TestimonialCard'
 import WorkGallery from '../components/WorkGallery'
 import Speedometer from '../components/Speedometer'
 import Inscription from '../components/Inscription'
+import ig1 from '../assets/work-3.jpg'
+import ig2 from '../assets/work-8.jpg'
+import ig3 from '../assets/work-14.jpg'
+import ig4 from '../assets/work-20.jpg'
+
+const INSTAGRAM = 'https://instagram.com/velomaicon'
+const igPhotos = [ig1, ig2, ig3, ig4]
 
 const segments = [
   {
@@ -260,6 +267,59 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Instagram — conheça a marca pela bancada */}
+      <section className="section-padding border-t border-brand-border">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          {/* Convite */}
+          <div className="animate-on-scroll">
+            <Inscription>@velomaicon no Instagram</Inscription>
+            <h2 className="text-3xl md:text-4xl text-brand-ink mt-3 mb-4">Conheça a marca pela bancada</h2>
+            <p className="text-brand-silver leading-relaxed mb-8 max-w-lg">
+              Postamos reparos do dia a dia, antes e depois, bastidores da oficina e
+              personalizações. É o melhor jeito de ver de perto como trabalhamos —
+              antes mesmo de enviar a sua peça.
+            </p>
+            <a
+              href={INSTAGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md bg-brand-orange text-brand-dark font-semibold backlight hover:bg-brand-orange-dark transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+              Seguir @velomaicon
+            </a>
+          </div>
+
+          {/* Colagem de fotos reais — leva ao perfil */}
+          <a
+            href={INSTAGRAM}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir o Instagram da Velomaicon"
+            className="animate-on-scroll group relative block rounded-lg overflow-hidden border border-brand-border"
+          >
+            <div className="grid grid-cols-2 gap-1">
+              {igPhotos.map((src, i) => (
+                <div key={i} className="relative aspect-square overflow-hidden">
+                  <img
+                    src={src}
+                    alt={`Trabalho Velomaicon ${i + 1}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center bg-brand-dark/0 group-hover:bg-brand-dark/40 transition-colors">
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity inline-flex items-center gap-2 px-4 py-2 rounded-md bg-brand-dark/85 text-brand-ink text-sm font-medium border border-brand-bezel">
+                <Instagram className="w-4 h-4 text-brand-orange" />
+                Ver no Instagram
+              </span>
+            </div>
+          </a>
         </div>
       </section>
 
