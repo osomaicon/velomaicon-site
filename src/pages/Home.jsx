@@ -2,11 +2,12 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Car, Bike, Anchor, ShieldCheck, Truck, Wrench, Clock, Star,
-  ChevronRight, ArrowRight, Zap
+  ChevronRight, ArrowRight, Zap, Palette, Tractor
 } from 'lucide-react'
 import CTAButton from '../components/CTAButton'
 import ServiceCard from '../components/ServiceCard'
 import TestimonialCard from '../components/TestimonialCard'
+import WorkGallery from '../components/WorkGallery'
 import logo from '../assets/logo.png'
 
 const segments = [
@@ -24,6 +25,16 @@ const segments = [
     icon: Anchor,
     title: 'Náutica',
     description: 'Manutenção especializada de instrumentos para barcos e lanchas: velocímetros, RPM, temperatura e combustível.',
+  },
+  {
+    icon: Tractor,
+    title: 'Quadricíclos',
+    description: 'Reparo e personalização de painéis para quadricíclos e ATVs de todas as marcas e modelos.',
+  },
+  {
+    icon: Palette,
+    title: 'Personalização',
+    description: 'Customização de iluminação, faces de mostrador, ponteiros e displays para dar um visual único ao seu painel.',
   },
 ]
 
@@ -226,6 +237,24 @@ export default function Home() {
             Ver o processo completo
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
+        </div>
+      </section>
+
+      {/* Work Gallery */}
+      <section className="section-padding bg-brand-surface">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 animate-on-scroll">
+            <div>
+              <p className="text-brand-orange font-display tracking-widest text-sm uppercase mb-2">Trabalhos realizados</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-white">Veja o que fazemos na prática</h2>
+            </div>
+            <Link to="/contato" className="text-brand-silver hover:text-brand-orange text-sm font-medium flex items-center gap-1 transition-colors shrink-0">
+              Enviar meu painel <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="animate-on-scroll">
+            <WorkGallery />
+          </div>
         </div>
       </section>
 

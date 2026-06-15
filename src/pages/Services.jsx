@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import {
   Gauge, Activity, Fuel, Lightbulb, Monitor, CircuitBoard,
   Zap, Smartphone, Layers, Anchor, Thermometer, RotateCcw,
-  PackageOpen, Truck, ShieldCheck
+  PackageOpen, Truck, ShieldCheck, Palette, Tractor, Brush, Sun
 } from 'lucide-react'
 import ServiceCard from '../components/ServiceCard'
 import CTAButton from '../components/CTAButton'
@@ -40,6 +40,27 @@ const categories = [
       { icon: Fuel, title: 'Indicador de Combustível', description: 'Reparo de medidores de nível de combustível para embarcações com falha de leitura ou sensor.' },
       { icon: Thermometer, title: 'Temperatura e Rotação', description: 'Conserto de medidores de temperatura do motor e conta-giros náuticos com defeito.' },
       { icon: RotateCcw, title: 'Horímetros e Totalizadores', description: 'Reparo de horímetros e contadores de uso para embarcações com parada ou leitura errada.' },
+    ],
+  },
+  {
+    title: 'Quadricíclos e ATVs',
+    icon: '🏎️',
+    services: [
+      { icon: Tractor, title: 'Painel de Quadricíclo', description: 'Reparo completo de painéis para quadricíclos, ATVs e side-by-sides de todas as marcas.' },
+      { icon: Gauge, title: 'Velocímetro ATV', description: 'Conserto de velocímetros analógicos e digitais para quadricíclos com leitura errada ou parada.' },
+      { icon: Monitor, title: 'Display e Painel Digital', description: 'Reparo de telas e painéis digitais multifuncionais para quadricíclos com display danificado.' },
+      { icon: Fuel, title: 'Indicadores e Sensores', description: 'Reparo de marcadores de combustível, temperatura e sensores com defeito em ATVs.' },
+    ],
+  },
+  {
+    title: 'Personalização de Painéis',
+    icon: '🎨',
+    services: [
+      { icon: Palette, title: 'Faces de Mostrador Customizadas', description: 'Criação de faces personalizadas para velocímetros e conta-giros com cores, fontes e escalas à sua escolha.' },
+      { icon: Lightbulb, title: 'Iluminação Personalizada', description: 'Troca de iluminação interna para LED colorido, com opções de cor e intensidade personalizadas.' },
+      { icon: Brush, title: 'Ponteiros e Agulhas', description: 'Substituição de ponteiros por modelos personalizados em diferentes cores e formatos.' },
+      { icon: Monitor, title: 'Displays com Visual Custom', description: 'Reprogramação e personalização visual de displays digitais para um look exclusivo.' },
+      { icon: Sun, title: 'Retroiluminação Colorida', description: 'Troca da retroiluminação original por LEDs coloridos — vermelho, azul, verde, branco e mais.' },
     ],
   },
 ]
