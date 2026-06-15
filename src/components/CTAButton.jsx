@@ -14,12 +14,13 @@ export default function CTAButton({
   const sizes = {
     sm: 'px-4 py-2 text-sm gap-1.5',
     md: 'px-6 py-3 text-base gap-2',
-    lg: 'px-8 py-4 text-lg gap-2',
+    lg: 'px-7 py-3.5 text-base gap-2',
   }
 
+  // Primary reads like a lit key on the dashboard; outline is an unlit bezel control.
   const variants = {
-    primary: 'bg-brand-orange hover:bg-brand-orange-dark text-white glow hover:glow',
-    outline: 'border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white',
+    primary: 'bg-brand-orange hover:bg-brand-orange-dark text-brand-dark backlight',
+    outline: 'border border-brand-bezel text-brand-ink hover:border-brand-orange hover:text-brand-orange',
   }
 
   return (
@@ -27,7 +28,7 @@ export default function CTAButton({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center font-semibold rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 ${sizes[size]} ${variants[variant]} ${className}`}
+      className={`inline-flex items-center font-semibold rounded-md transition-colors duration-200 ${sizes[size]} ${variants[variant]} ${className}`}
     >
       <MessageCircle className="w-5 h-5 shrink-0" />
       {label}

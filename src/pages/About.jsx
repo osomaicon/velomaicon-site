@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { MapPin, ShieldCheck, Wrench, Users, Star, Truck } from 'lucide-react'
 import CTAButton from '../components/CTAButton'
+import Inscription from '../components/Inscription'
 
 const values = [
   { icon: Wrench, title: 'Excelência Técnica', desc: 'Utilizamos equipamentos modernos de diagnóstico e técnicos com vasta experiência em eletrônica veicular.' },
@@ -33,10 +34,11 @@ export default function About() {
       {/* Hero */}
       <section className="section-padding bg-brand-surface border-b border-brand-border">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Sobre a <span className="text-gradient">Velomaicon</span>
+          <Inscription className="justify-center mb-4">Osório, RS · desde a bancada</Inscription>
+          <h1 className="text-4xl md:text-5xl text-brand-ink mb-4">
+            Sobre a <span className="text-brand-orange">Velomaicon</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-brand-silver text-lg max-w-2xl mx-auto">
             Uma empresa nascida da paixão por eletrônica veicular e do compromisso com a qualidade técnica.
           </p>
         </div>

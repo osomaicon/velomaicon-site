@@ -8,7 +8,8 @@ import CTAButton from '../components/CTAButton'
 import ServiceCard from '../components/ServiceCard'
 import TestimonialCard from '../components/TestimonialCard'
 import WorkGallery from '../components/WorkGallery'
-import logo from '../assets/logo.png'
+import Speedometer from '../components/Speedometer'
+import Inscription from '../components/Inscription'
 
 const segments = [
   {
@@ -34,12 +35,12 @@ const segments = [
 ]
 
 const differentials = [
-  { icon: Wrench, title: 'Diagnóstico Preciso', desc: 'Equipamentos modernos para identificar a causa exata do problema, sem achismos.' },
-  { icon: ShieldCheck, title: 'Garantia do Serviço', desc: 'Todos os reparos saem com garantia por escrito. Sua tranquilidade é prioridade.' },
-  { icon: Truck, title: 'Atendimento Nacional', desc: 'Recebemos peças de todo o Brasil via Correios ou transportadora. Simples e seguro.' },
-  { icon: Clock, title: 'Prazo de Entrega', desc: 'Prazo justo e comunicação transparente em cada etapa do processo de reparo.' },
-  { icon: Zap, title: 'Técnicos Especializados', desc: 'Anos de experiência exclusiva em instrumentação veicular e eletrônica embarcada.' },
-  { icon: Star, title: 'Qualidade Comprovada', desc: 'Centenas de clientes satisfeitos em todo o Brasil atestam nossa qualidade.' },
+  { icon: Wrench, title: 'Diagnóstico preciso', desc: 'Equipamentos modernos identificam a causa exata do problema, sem achismos.' },
+  { icon: ShieldCheck, title: 'Garantia por escrito', desc: 'Todo reparo sai com garantia documentada. Sua tranquilidade vem antes.' },
+  { icon: Truck, title: 'Atendimento nacional', desc: 'Recebemos peças de todo o Brasil via Correios ou transportadora.' },
+  { icon: Clock, title: 'Prazo informado', desc: 'Prazo justo e comunicação transparente em cada etapa do reparo.' },
+  { icon: Zap, title: 'Técnicos especializados', desc: 'Anos de experiência exclusiva em instrumentação veicular e eletrônica embarcada.' },
+  { icon: Star, title: 'Qualidade comprovada', desc: 'Centenas de clientes atendidos de norte a sul do país.' },
 ]
 
 const testimonials = [
@@ -62,7 +63,7 @@ const testimonials = [
     city: 'Manaus, AM',
     vehicle: 'Lancha Focker 215',
     rating: 5,
-    text: 'Pensava que teria que trocar o painel inteiro da minha lancha. A Velomaicon consertou tudo com um terço do preço. Profissionalismo total, mesmo atendendo do outro lado do Brasil.',
+    text: 'Pensava que teria que trocar o painel inteiro da minha lancha. A Velomaicon consertou tudo com um terço do preço. Profissionalismo total, mesmo do outro lado do Brasil.',
   },
   {
     name: 'Ana Paula Ferreira',
@@ -87,128 +88,95 @@ function useScrollAnimation() {
   return ref
 }
 
+const specs = ['Diagnóstico preciso', 'Garantia por escrito', '26 estados atendidos', 'Prazo informado']
+
 export default function Home() {
   const ref = useScrollAnimation()
 
   return (
     <div ref={ref}>
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Deep instrument-cluster background */}
-        <div className="absolute inset-0 bg-brand-dark" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(8,20,40,0.9),transparent)]" />
+      {/* Hero — the gauge is the thesis: a panel coming back to life */}
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16 cluster-vignette">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
-        {/* Signature element: speedometer arc SVG */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-          <svg
-            viewBox="0 0 800 800"
-            className="w-[700px] h-[700px] md:w-[900px] md:h-[900px] opacity-[0.07]"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Outer arc */}
-            <path d="M 100 550 A 340 340 0 1 1 700 550" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
-            {/* Inner arc */}
-            <path d="M 150 565 A 280 280 0 1 1 650 565" stroke="#f97316" strokeWidth="1" strokeLinecap="round" />
-            {/* Tick marks — major */}
-            {Array.from({ length: 11 }).map((_, i) => {
-              const angle = -225 + i * 27
-              const rad = (angle * Math.PI) / 180
-              const cx = 400, cy = 400, r1 = 330, r2 = 305
-              const x1 = cx + r1 * Math.cos(rad), y1 = cy + r1 * Math.sin(rad)
-              const x2 = cx + r2 * Math.cos(rad), y2 = cy + r2 * Math.sin(rad)
-              return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
-            })}
-            {/* Tick marks — minor */}
-            {Array.from({ length: 55 }).map((_, i) => {
-              if (i % 5 === 0) return null
-              const angle = -225 + i * 5.4
-              const rad = (angle * Math.PI) / 180
-              const cx = 400, cy = 400, r1 = 330, r2 = 318
-              const x1 = cx + r1 * Math.cos(rad), y1 = cy + r1 * Math.sin(rad)
-              const x2 = cx + r2 * Math.cos(rad), y2 = cy + r2 * Math.sin(rad)
-              return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="1" strokeLinecap="round" />
-            })}
-            {/* Center dot */}
-            <circle cx="400" cy="400" r="8" fill="#f97316" />
-            <circle cx="400" cy="400" r="20" stroke="#f97316" strokeWidth="1" />
-          </svg>
-        </div>
+          {/* Copy */}
+          <div className="text-center lg:text-left order-2 lg:order-1">
+            <div className="flex justify-center lg:justify-start mb-6 animate-fade-in">
+              <Inscription>Osório, RS · todo o Brasil pelos Correios</Inscription>
+            </div>
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          {/* Logo */}
-          <div className="flex justify-center mb-10 animate-fade-in">
-            <img src={logo} alt="Velomaicon" className="h-24 md:h-32 w-auto drop-shadow-2xl" />
+            <h1 className="text-5xl md:text-6xl lg:text-7xl text-brand-ink mb-6 animate-slide-up">
+              Seu painel<br />de volta{' '}
+              <span className="text-brand-orange">funcionando.</span>
+            </h1>
+
+            <p className="text-lg text-brand-silver max-w-xl mx-auto lg:mx-0 mb-8 animate-slide-up leading-relaxed" style={{ animationDelay: '0.1s' }}>
+              Reparo especializado de velocímetros, painéis e computadores de bordo
+              para carros, motos e embarcações. Você envia pelos Correios — devolvemos
+              funcionando, com garantia por escrito.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <CTAButton size="lg" label="Solicitar orçamento grátis" />
+              <Link
+                to="/como-funciona"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-brand-ink border border-brand-bezel rounded-md hover:border-brand-orange hover:text-brand-orange transition-colors group"
+              >
+                Como funciona o envio
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Spec strip — reads like a gauge readout, not a checkmark trust bar */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 mt-10 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+              {specs.map((item, i) => (
+                <span key={item} className="inscription flex items-center gap-4 text-[11px] text-brand-silver">
+                  {i > 0 && <span aria-hidden className="h-3 w-px bg-brand-border" />}
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Eyebrow */}
-          <p className="font-display text-brand-orange tracking-[0.25em] text-sm uppercase mb-5 animate-fade-in">
-            Osório, RS · Atendimento para Todo o Brasil
-          </p>
-
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-7 animate-slide-up">
-            Seu painel de volta<br />
-            <span className="text-brand-orange">funcionando.</span>
-          </h1>
-
-          <p className="text-lg text-brand-silver max-w-xl mx-auto mb-10 animate-slide-up leading-relaxed" style={{ animationDelay: '0.1s' }}>
-            Reparo especializado de velocímetros, painéis e computadores de bordo para carros, motos e embarcações. Você envia pelos Correios — nós devolvemos funcionando, com garantia.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <CTAButton size="lg" label="Solicitar Orçamento Grátis" />
-            <Link
-              to="/como-funciona"
-              className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-brand-silver border border-brand-border rounded-xl hover:border-brand-orange hover:text-white transition-all group"
-            >
-              Como funciona o envio
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          {/* Trust bar */}
-          <div className="flex flex-wrap items-center justify-center gap-6 mt-14 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            {[
-              '✓ Diagnóstico preciso',
-              '✓ Garantia por escrito',
-              '✓ 26 estados atendidos',
-              '✓ Prazo comunicado',
-            ].map(item => (
-              <span key={item} className="text-brand-silver text-sm font-medium">{item}</span>
-            ))}
+          {/* Signature gauge */}
+          <div className="order-1 lg:order-2 animate-fade-in">
+            <Speedometer className="w-full max-w-lg mx-auto h-auto" />
           </div>
         </div>
       </section>
 
       {/* Segments */}
-      <section className="section-padding bg-brand-surface">
+      <section className="section-padding bg-brand-surface border-t border-brand-border">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 animate-on-scroll">
-            <p className="text-brand-orange font-display tracking-widest text-sm uppercase mb-2">O que reparamos</p>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-white max-w-2xl">Quatro tipos de veículo, uma especialidade: instrumentação.</h2>
+            <Inscription>O que reparamos</Inscription>
+            <h2 className="text-3xl md:text-4xl text-brand-ink max-w-2xl mt-3">
+              Quatro tipos de veículo, uma especialidade: instrumentação.
+            </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {segments.map((s, i) => (
-              <div key={s.title} className="animate-on-scroll" style={{ transitionDelay: `${i * 0.1}s` }}>
+              <div key={s.title} className="animate-on-scroll" style={{ transitionDelay: `${i * 0.08}s` }}>
                 <ServiceCard {...s} />
               </div>
             ))}
           </div>
 
-          {/* Personalização — featured banner (a different kind of service) */}
-          <div className="animate-on-scroll mt-5 relative overflow-hidden rounded-2xl bg-gradient-to-r from-brand-orange/15 via-brand-card to-brand-card border border-brand-orange/30 p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6">
-            <div className="w-14 h-14 rounded-2xl bg-brand-orange flex items-center justify-center shrink-0 glow">
-              <Palette className="w-7 h-7 text-white" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-white font-display font-bold text-xl md:text-2xl mb-1">Personalização de Painéis</h3>
-              <p className="text-brand-silver text-sm md:text-base max-w-2xl">
-                Vai além do reparo: faces de mostrador customizadas, iluminação LED colorida, ponteiros e displays com visual exclusivo. Deixe seu painel com a sua cara.
-              </p>
+          {/* Personalização — a different kind of service, flat panel with an amber rule */}
+          <div className="animate-on-scroll mt-4 tile p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 border-l-2 border-l-brand-orange">
+            <div className="flex items-center gap-4 flex-1">
+              <Palette className="w-8 h-8 text-brand-orange shrink-0" strokeWidth={1.75} />
+              <div>
+                <h3 className="text-brand-ink font-display font-semibold text-xl md:text-2xl mb-1">Personalização de painéis</h3>
+                <p className="text-brand-silver text-sm md:text-base max-w-2xl">
+                  Vai além do reparo: faces de mostrador customizadas, iluminação LED,
+                  ponteiros e displays com visual exclusivo. Seu painel com a sua cara.
+                </p>
+              </div>
             </div>
             <Link
               to="/servicos"
-              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-brand-orange text-white font-semibold rounded-xl border border-brand-border hover:border-brand-orange transition-all group"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 text-brand-ink font-semibold rounded-md border border-brand-bezel hover:border-brand-orange hover:text-brand-orange transition-colors group"
             >
               Ver opções
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -217,23 +185,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Differentials */}
+      {/* Differentials — a technical spec plate, hairline-divided rows */}
       <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-on-scroll">
-            <p className="text-brand-orange font-display tracking-widest text-sm uppercase mb-2">Por que a Velomaicon</p>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Confiança técnica do diagnóstico à entrega</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">Comprometidos com a qualidade técnica e a satisfação completa do cliente em cada reparo.</p>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 animate-on-scroll">
+            <Inscription>Por que a Velomaicon</Inscription>
+            <h2 className="text-3xl md:text-4xl text-brand-ink mt-3">Confiança técnica, do diagnóstico à entrega</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="tile divide-y divide-brand-border grid sm:grid-cols-2 sm:divide-y-0">
             {differentials.map((d, i) => (
-              <div key={d.title} className="animate-on-scroll card-dark p-5 flex gap-4 hover:border-brand-orange/40 transition-all" style={{ transitionDelay: `${i * 0.08}s` }}>
-                <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
-                  <d.icon className="w-5 h-5 text-brand-orange" />
-                </div>
+              <div
+                key={d.title}
+                className={`animate-on-scroll flex gap-4 p-6 sm:border-b sm:border-brand-border ${i % 2 === 0 ? 'sm:border-r' : ''} ${i >= differentials.length - 2 ? 'sm:border-b-0' : ''}`}
+                style={{ transitionDelay: `${i * 0.06}s` }}
+              >
+                <d.icon className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" strokeWidth={1.75} />
                 <div>
-                  <h3 className="text-white font-semibold text-sm mb-1">{d.title}</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">{d.desc}</p>
+                  <h3 className="text-brand-ink font-display font-semibold text-base mb-1">{d.title}</h3>
+                  <p className="text-brand-silver text-sm leading-relaxed">{d.desc}</p>
                 </div>
               </div>
             ))}
@@ -242,29 +211,32 @@ export default function Home() {
       </section>
 
       {/* How it works preview */}
-      <section className="section-padding bg-brand-surface">
-        <div className="max-w-5xl mx-auto text-center animate-on-scroll">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Simples de enviar, fácil de receber de volta</h2>
-          <p className="text-gray-400 mb-8 max-w-xl mx-auto">Você embala a peça, envia pelos Correios ou transportadora, e nós cuidamos do resto. Seu painel chega de volta reparado com garantia.</p>
+      <section className="section-padding bg-brand-surface border-y border-brand-border">
+        <div className="max-w-3xl mx-auto text-center animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl text-brand-ink mb-4">Simples de enviar, fácil de receber de volta</h2>
+          <p className="text-brand-silver mb-8 max-w-xl mx-auto leading-relaxed">
+            Você embala a peça, envia pelos Correios ou transportadora, e cuidamos do resto.
+            Seu painel chega de volta reparado, com garantia.
+          </p>
           <Link
             to="/como-funciona"
-            className="inline-flex items-center gap-2 text-brand-orange font-semibold hover:underline group"
+            className="inline-flex items-center gap-2 text-brand-orange font-semibold hover:gap-3 transition-all group"
           >
             Ver o processo completo
-            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ChevronRight className="w-5 h-5" />
           </Link>
         </div>
       </section>
 
-      {/* Work Gallery */}
+      {/* Work gallery */}
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 animate-on-scroll">
             <div>
-              <p className="text-brand-orange font-display tracking-widest text-sm uppercase mb-2">Trabalhos realizados</p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-white">Veja o que fazemos na prática</h2>
+              <Inscription>Trabalhos realizados</Inscription>
+              <h2 className="text-3xl md:text-4xl text-brand-ink mt-3">Veja o que fazemos na prática</h2>
             </div>
-            <Link to="/contato" className="text-brand-silver hover:text-brand-orange text-sm font-medium flex items-center gap-1 transition-colors shrink-0">
+            <Link to="/contato" className="inscription text-brand-silver hover:text-brand-orange flex items-center gap-1.5 transition-colors shrink-0">
               Enviar meu painel <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -275,16 +247,15 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding bg-brand-surface">
+      <section className="section-padding bg-brand-surface border-t border-brand-border">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-on-scroll">
-            <p className="text-brand-orange font-display tracking-widest text-sm uppercase mb-2">Quem já enviou</p>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">O que nossos clientes dizem</h2>
-            <p className="text-gray-400">Avaliações reais de clientes de todo o Brasil.</p>
+          <div className="mb-12 animate-on-scroll">
+            <Inscription>Quem já enviou</Inscription>
+            <h2 className="text-3xl md:text-4xl text-brand-ink mt-3">O que os clientes dizem</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {testimonials.map((t, i) => (
-              <div key={t.name} className="animate-on-scroll" style={{ transitionDelay: `${i * 0.1}s` }}>
+              <div key={t.name} className="animate-on-scroll" style={{ transitionDelay: `${i * 0.08}s` }}>
                 <TestimonialCard {...t} />
               </div>
             ))}
@@ -293,12 +264,17 @@ export default function Home() {
       </section>
 
       {/* CTA final */}
-      <section className="section-padding bg-gradient-to-br from-brand-orange/20 via-brand-surface to-brand-surface border-y border-brand-border">
-        <div className="max-w-3xl mx-auto text-center animate-on-scroll">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Pronto para recuperar seu painel?</h2>
-          <p className="text-gray-300 mb-8 text-lg">Fale com nossos especialistas agora pelo WhatsApp e receba um orçamento sem compromisso.</p>
-          <CTAButton size="lg" label="Falar com Especialista" />
-          <p className="text-gray-500 text-sm mt-4">Atendimento em todo o Brasil · Osório, RS</p>
+      <section className="section-padding border-t border-brand-border relative overflow-hidden">
+        <div aria-hidden className="absolute inset-0 cluster-vignette opacity-60" />
+        <div className="relative max-w-3xl mx-auto text-center animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl text-brand-ink mb-4">Pronto para recuperar seu painel?</h2>
+          <p className="text-brand-silver mb-8 text-lg">
+            Fale com um especialista pelo WhatsApp e receba um orçamento sem compromisso.
+          </p>
+          <div className="flex justify-center">
+            <CTAButton size="lg" label="Falar com especialista" />
+          </div>
+          <p className="inscription text-brand-silver text-[11px] mt-5">Atendimento em todo o Brasil · Osório, RS</p>
         </div>
       </section>
     </div>

@@ -5,6 +5,7 @@ import {
 } from 'lucide-react'
 import StepCard from '../components/StepCard'
 import CTAButton from '../components/CTAButton'
+import Inscription from '../components/Inscription'
 
 const steps = [
   {
@@ -70,10 +71,11 @@ export default function HowItWorks() {
       {/* Hero */}
       <section className="section-padding bg-brand-surface border-b border-brand-border">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Como <span className="text-gradient">Funciona</span>
+          <Inscription className="justify-center mb-4">Do envio à devolução</Inscription>
+          <h1 className="text-4xl md:text-5xl text-brand-ink mb-4">
+            Como <span className="text-brand-orange">funciona</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-brand-silver text-lg max-w-2xl mx-auto">
             Atendemos todo o Brasil via envio postal. O processo é simples, seguro e você acompanha cada etapa pelo WhatsApp.
           </p>
         </div>

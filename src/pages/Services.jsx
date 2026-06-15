@@ -2,15 +2,17 @@ import { useEffect, useRef } from 'react'
 import {
   Gauge, Activity, Fuel, Lightbulb, Monitor, CircuitBoard,
   Zap, Smartphone, Layers, Anchor, Thermometer, RotateCcw,
-  PackageOpen, Truck, ShieldCheck, Palette, Tractor, Brush, Sun
+  PackageOpen, Truck, ShieldCheck, Palette, Tractor, Brush, Sun,
+  Car, Bike
 } from 'lucide-react'
 import ServiceCard from '../components/ServiceCard'
 import CTAButton from '../components/CTAButton'
+import Inscription from '../components/Inscription'
 
 const categories = [
   {
     title: 'Automóveis',
-    icon: '🚗',
+    catIcon: Car,
     services: [
       { icon: Gauge, title: 'Painel de Instrumentos', description: 'Reparo completo do painel, incluindo ponteiros, retroiluminação, motores de passo e eletrônica interna.' },
       { icon: Activity, title: 'Velocímetro e Conta-Giros', description: 'Calibração e conserto de velocímetros analógicos e digitais, e conta-giros com defeito ou imprecisão.' },
@@ -22,7 +24,7 @@ const categories = [
   },
   {
     title: 'Motos',
-    icon: '🏍️',
+    catIcon: Bike,
     services: [
       { icon: Gauge, title: 'Velocímetro Analógico', description: 'Reparo de velocímetros de cabo e eletrônicos para motos com agulha travada, parada ou com leitura errada.' },
       { icon: Smartphone, title: 'Painel Digital Multifuncional', description: 'Reparo de painéis digitais completos com falhas de display, botões, conexões e software.' },
@@ -33,7 +35,7 @@ const categories = [
   },
   {
     title: 'Náutica',
-    icon: '⚓',
+    catIcon: Anchor,
     services: [
       { icon: Anchor, title: 'Painel Náutico Completo', description: 'Reparo de painéis de instrumentos para barcos, lanchas e jet-skis com defeitos elétricos ou mecânicos.' },
       { icon: Activity, title: 'Velocímetro Náutico', description: 'Conserto de velocímetros para embarcações com leitura incorreta, agulha travada ou display danificado.' },
@@ -44,7 +46,7 @@ const categories = [
   },
   {
     title: 'Quadricíclos e ATVs',
-    icon: '🏎️',
+    catIcon: Tractor,
     services: [
       { icon: Tractor, title: 'Painel de Quadricíclo', description: 'Reparo completo de painéis para quadricíclos, ATVs e side-by-sides de todas as marcas.' },
       { icon: Gauge, title: 'Velocímetro ATV', description: 'Conserto de velocímetros analógicos e digitais para quadricíclos com leitura errada ou parada.' },
@@ -54,7 +56,7 @@ const categories = [
   },
   {
     title: 'Personalização de Painéis',
-    icon: '🎨',
+    catIcon: Palette,
     services: [
       { icon: Palette, title: 'Faces de Mostrador Customizadas', description: 'Criação de faces personalizadas para velocímetros e conta-giros com cores, fontes e escalas à sua escolha.' },
       { icon: Lightbulb, title: 'Iluminação Personalizada', description: 'Troca de iluminação interna para LED colorido, com opções de cor e intensidade personalizadas.' },
@@ -93,10 +95,11 @@ export default function Services() {
       {/* Hero */}
       <section className="section-padding bg-brand-surface border-b border-brand-border">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Nossos <span className="text-gradient">Serviços</span>
+          <Inscription className="justify-center mb-4">Catálogo de reparos</Inscription>
+          <h1 className="text-4xl md:text-5xl text-brand-ink mb-4">
+            Nossos <span className="text-brand-orange">serviços</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-brand-silver text-lg max-w-2xl mx-auto">
             Reparo especializado para painéis, velocímetros e computadores de bordo de qualquer marca e modelo. Recebemos de todo o Brasil.
           </p>
         </div>
@@ -106,9 +109,9 @@ export default function Services() {
       {categories.map((cat, ci) => (
         <section key={cat.title} className={`section-padding ${ci % 2 === 1 ? 'bg-brand-surface' : ''}`}>
           <div className="max-w-7xl mx-auto">
-            <div className="flex items-center gap-3 mb-10 animate-on-scroll">
-              <span className="text-4xl">{cat.icon}</span>
-              <h2 className="text-2xl md:text-3xl font-bold text-white">{cat.title}</h2>
+            <div className="flex items-center gap-4 mb-10 animate-on-scroll">
+              <cat.catIcon className="w-8 h-8 text-brand-orange shrink-0" strokeWidth={1.75} />
+              <h2 className="text-2xl md:text-3xl text-brand-ink">{cat.title}</h2>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {cat.services.map((s, i) => (

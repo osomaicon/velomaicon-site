@@ -1,15 +1,15 @@
+// An instrument tile: flat graphite panel, hairline bezel that brightens on hover.
+// No lift, no glow — the quiet surface around the signature.
 export default function ServiceCard({ icon: Icon, title, description, highlight = false }) {
   return (
-    <div className={`card-dark p-6 rounded-2xl transition-all duration-300 hover:border-brand-orange/50 hover:-translate-y-1 group ${
-      highlight ? 'border-brand-orange/40 bg-brand-orange/5' : ''
+    <div className={`tile p-6 h-full transition-colors duration-200 hover:border-brand-bezel ${
+      highlight ? 'border-brand-orange/50' : ''
     }`}>
-      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all group-hover:scale-110 ${
-        highlight ? 'bg-brand-orange text-white' : 'bg-brand-orange/10 text-brand-orange'
-      }`}>
-        <Icon className="w-6 h-6" />
+      <div className="flex items-center gap-3 mb-3">
+        <Icon className={`w-6 h-6 shrink-0 ${highlight ? 'text-brand-orange' : 'text-brand-orange/80'}`} strokeWidth={1.75} />
+        <h3 className="text-brand-ink font-display font-semibold text-lg">{title}</h3>
       </div>
-      <h3 className="text-white font-semibold text-base mb-2">{title}</h3>
-      <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+      <p className="text-brand-silver text-sm leading-relaxed">{description}</p>
     </div>
   )
 }

@@ -12,44 +12,72 @@
   }
 
   body {
-    @apply bg-brand-dark text-gray-100 font-sans antialiased;
+    @apply bg-brand-dark text-brand-silver font-sans antialiased;
   }
 
   h1, h2 {
-    @apply font-display font-bold leading-tight;
+    @apply font-display font-semibold tracking-tight leading-[1.05] text-brand-ink;
   }
 
   h3, h4 {
-    @apply font-bold leading-tight;
+    @apply font-display font-semibold leading-tight text-brand-ink;
+  }
+
+  /* visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.orange');
+    outline-offset: 2px;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-brand-orange to-orange-400 bg-clip-text text-transparent;
+  /* A gauge inscription: small mono label, like text printed on a dial face */
+  .inscription {
+    @apply font-mono text-xs uppercase tracking-[0.22em] text-brand-silver;
   }
 
-  .glow {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
-  }
-
-  .glow-sm {
-    box-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+  /* Backlight: light coming through a gauge face, not a neon glow.
+     Soft, warm, low-spread — used only where something is genuinely "lit". */
+  .backlight {
+    box-shadow: 0 0 60px -12px rgba(255, 138, 31, 0.35);
   }
 
   .section-padding {
-    @apply py-16 md:py-24 px-4;
+    @apply py-20 md:py-28 px-4;
   }
 
+  /* Instrument tile: flat graphite panel with a hairline bezel. No lift, no glow. */
+  .tile {
+    @apply bg-brand-card border border-brand-border rounded-md;
+  }
+
+  /* Compatibility aliases for the other pages (Serviços, Sobre, etc.).
+     They keep working but adopt the instrument aesthetic — no neon. */
   .card-dark {
-    @apply bg-brand-card border border-brand-border rounded-2xl;
+    @apply bg-brand-card border border-brand-border rounded-md;
+  }
+
+  .text-gradient {
+    @apply text-brand-orange;
+  }
+
+  .glow,
+  .glow-sm {
+    box-shadow: 0 0 60px -16px rgba(255, 138, 31, 0.3);
+  }
+
+  /* Hooded-cluster vignette behind the hero */
+  .cluster-vignette {
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 42%, rgba(255, 138, 31, 0.06), transparent 70%),
+      radial-gradient(ellipse 90% 80% at 50% 30%, rgba(16, 19, 25, 0.6), #0b0d11 75%);
   }
 }
 
-/* Animações de scroll */
+/* Scroll reveal — a single quiet fade-up, used sparingly */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(24px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
@@ -58,7 +86,32 @@
   transform: translateY(0);
 }
 
-/* Respeitar usuários que preferem menos movimento */
+/* Signature: the needle sweeps from rest to its reading on load, then settles.
+   Demonstrates "your panel, working again" instead of just stating it. */
+@keyframes needle-sweep {
+  0%   { transform: rotate(-225deg); }
+  55%  { transform: rotate(30deg); }
+  74%  { transform: rotate(10deg); }
+  88%  { transform: rotate(21deg); }
+  100% { transform: rotate(18deg); }
+}
+
+.gauge-needle {
+  transform-box: view-box;
+  transform-origin: 400px 400px;
+  animation: needle-sweep 2.6s cubic-bezier(0.16, 0.84, 0.3, 1) 0.25s both;
+}
+
+@keyframes backlight-rise {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.gauge-lit {
+  animation: backlight-rise 1.6s ease-out 0.35s both;
+}
+
+/* Respect users who prefer less movement: everything settles immediately */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -71,5 +124,13 @@
   .animate-on-scroll {
     opacity: 1;
     transform: none;
+  }
+  .gauge-needle {
+    animation: none;
+    transform: rotate(18deg);
+  }
+  .gauge-lit {
+    animation: none;
+    opacity: 1;
   }
 }
