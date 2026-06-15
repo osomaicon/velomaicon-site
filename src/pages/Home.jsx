@@ -2,11 +2,12 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Car, Bike, Anchor, ShieldCheck, Truck, Wrench, Clock, Star,
-  ChevronRight, ArrowRight, Gauge, Zap
+  ChevronRight, ArrowRight, Zap
 } from 'lucide-react'
 import CTAButton from '../components/CTAButton'
 import ServiceCard from '../components/ServiceCard'
 import TestimonialCard from '../components/TestimonialCard'
+import logo from '../assets/logo.png'
 
 const segments = [
   {
@@ -99,10 +100,9 @@ export default function Home() {
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/30 rounded-full px-4 py-2 mb-6 animate-fade-in">
-            <Gauge className="w-4 h-4 text-brand-orange" />
-            <span className="text-brand-orange text-sm font-medium">Especialistas em Instrumentação Veicular</span>
+          {/* Logo hero */}
+          <div className="flex justify-center mb-8 animate-fade-in">
+            <img src={logo} alt="Velomaicon" className="h-28 md:h-36 w-auto drop-shadow-2xl" />
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 animate-slide-up">

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Gauge, MapPin, Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react'
+import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 const navLinks = [
   { to: '/', label: 'Início' },
@@ -19,14 +20,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-full border-2 border-brand-orange flex items-center justify-center">
-                <Gauge className="w-5 h-5 text-brand-orange" />
-              </div>
-              <span className="text-xl font-extrabold">
-                <span className="text-white">Velo</span>
-                <span className="text-brand-orange">maicon</span>
-              </span>
+            <Link to="/" className="flex items-center mb-4">
+              <img src={logo} alt="Velomaicon Velocímetros" className="h-14 w-auto" />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
               Especialistas em reparo e manutenção de painéis de velocímetro e computadores de bordo para carros, motos e embarcações.

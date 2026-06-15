@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Gauge } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import CTAButton from './CTAButton'
+import logo from '../assets/logo.png'
 
 const navLinks = [
   { to: '/', label: 'Início' },
@@ -34,14 +35,8 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-full border-2 border-brand-orange flex items-center justify-center glow-sm group-hover:glow transition-all">
-              <Gauge className="w-5 h-5 text-brand-orange" />
-            </div>
-            <span className="text-xl font-extrabold tracking-tight">
-              <span className="text-white">Velo</span>
-              <span className="text-brand-orange">maicon</span>
-            </span>
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="Velomaicon Velocímetros" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop nav */}
